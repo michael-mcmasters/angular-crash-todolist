@@ -32,9 +32,16 @@ export class TodoService {
   }
 
   // Delete Todo
+  // Add /myTodo.id to the end of the url to specify which property to delete. Then pass that url.
+  // You can see how this works by going to https://jsonplaceholder.typicode.com/todos/2, which only shows one property with the id: 2.
   deleteTodo(myTodo: Todo): Observable<Todo> {
     const url = `${this.todosUrl}/${myTodo.id}`;
     return this.http.delete<Todo>(url, httpOptions);
+  }
+
+  // Add Todo
+  addTodo(newTodo: Todo): Observable<Todo> {
+    return this.http.post<Todo>(this.todosUrl, newTodo, httpOptions);
   }
 
   // Toggle Completed

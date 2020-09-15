@@ -22,6 +22,7 @@ export class AddTodoComponent implements OnInit {
       title: this.title,
       completed: false,
     };
+    console.log(newTodo);
 
     this.addTodo.emit(newTodo);
   }

@@ -26,9 +26,19 @@ export class TodosComponent implements OnInit {
   // todos.filter() loops through every value in todos array, finds the index of the value passed in params,
   // and removes it from the array. When html renders the page using this array, it will be gone, thus it's deleted.
   deleteTodo(myTodo: Todo) {
-    this.todos = this.todos.filter((t) => t.id !== myTodo.id); // remove on client
-    this.todoService.deleteTodo(myTodo).subscribe(); // remove on server
+    // remove on client
+    this.todos = this.todos.filter((t) => t.id !== myTodo.id);
+    // remove on server
+    this.todoService.deleteTodo(myTodo).subscribe();
   }
 
-  addTodo(newTodo: Todo) {}
+  // Make request to API. Then add it once API finishes.
+  // Note! The name of the todo won't appear like it does in the tutorial. Other Youtube comments are reporting the same issue.
+  // There are similar glitches with checking and deleting todos that we have added.
+  addTodo(newTodo: Todo) {
+    console.log(newTodo);
+    this.todoService.addTodo(newTodo).subscribe((td) => {
+      this.todos.push(td);
+    });
+  }
 }
