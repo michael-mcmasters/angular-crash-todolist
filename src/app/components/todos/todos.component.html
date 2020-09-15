@@ -1,0 +1,3 @@
+<!-- Here we are looping through each todo object in the todo array in todos.component.ts.
+Then for each component we are spawning, we are assigning the object to the component so it can reference its data. -->
+<app-todo-item *ngFor="let todo of todos" [myTodo]="todo"> </app-todo-item>
