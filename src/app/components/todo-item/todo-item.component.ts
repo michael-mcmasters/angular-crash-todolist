@@ -8,20 +8,16 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./todo-item.component.css'],
 })
 export class TodoItemComponent implements OnInit {
-  // @Input lets us know that this variable is assigned in the parent component's html file.
-  // So in todos.component.html myTodo is assigned where it says [myTodo]="todo">.
-  // Because myTodo is of type: Todo.ts. It has properties id, title, completed.
+  // @Input() when parent component is setting values in this component. ( As seen in todos.component.html: [myTodo]="todo" ).
+  // @Output() when this component is setting a value in the parent component. ( As seen in todos.component.html: (deleteTodo)="deleteTodo($event)" ).
 
-  // @Input() when parent component is setting values in this component.
-  // @Output() when this component is
+  // Because myTodo is of type: Todo. It has properties id, title, completed. (Go to Todo.ts to see them.)
   @Input() myTodo: Todo;
   @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter();
 
   constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {}
-
-  // Set Dynamic Classes
 
   // Returns CSS classes for <div> to use.
   setClasses() {
@@ -34,9 +30,10 @@ export class TodoItemComponent implements OnInit {
   }
 
   onToggle(myTodo) {
-    // Toggle in UI
+    // update on client
     myTodo.completed = !myTodo.completed;
-    // Toggle on server
+
+    // update on server
     this.todoService
       .toggleCompleted(myTodo)
       .subscribe((myTodo) => console.log(myTodo));

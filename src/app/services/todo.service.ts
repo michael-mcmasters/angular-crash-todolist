@@ -31,6 +31,12 @@ export class TodoService {
     return this.http.get<Todo[]>(`${this.todosUrl}${this.todosLimit}`);
   }
 
+  // Delete Todo
+  deleteTodo(myTodo: Todo): Observable<Todo> {
+    const url = `${this.todosUrl}/${myTodo.id}`;
+    return this.http.delete<Todo>(url, httpOptions);
+  }
+
   // Toggle Completed
   // We use Observable<any> instead of Observable<Todo> because the API has a 4th property called userID but ours only has 3 properties. So they're not exact.
   toggleCompleted(myTodo: Todo): Observable<any> {

@@ -23,7 +23,10 @@ export class TodosComponent implements OnInit {
     });
   }
 
+  // todos.filter() loops through every value in todos array, finds the index of the value passed in params,
+  // and removes it from the array. When html renders the page using this array, it will be gone, thus it's deleted.
   deleteTodo(myTodo: Todo) {
-    console.log('delete me');
+    this.todos = this.todos.filter((t) => t.id !== myTodo.id); // remove on client
+    this.todoService.deleteTodo(myTodo).subscribe(); // remove on server
   }
 }
