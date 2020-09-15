@@ -16,6 +16,7 @@ export class TodoItemComponent implements OnInit {
   ngOnInit(): void {}
 
   // Set Dynamic Classes
+
   // Returns CSS classes for <div> to use.
   setClasses() {
     // Both are classes. But 'is-complete' is a string because Javascript doesn't allow "-" in-between variables.
@@ -25,5 +26,14 @@ export class TodoItemComponent implements OnInit {
     };
 
     return classes;
+  }
+
+  onToggle(myTodo) {
+    console.log('toggle');
+    myTodo.completed = !myTodo.completed;
+  }
+
+  onDelete(myTodo) {
+    console.log('delete');
   }
 }
