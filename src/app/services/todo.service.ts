@@ -3,6 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Todo } from '../models/Todo';
 
+// The type of data we are passing to the API. Letting it know it will be in json format.
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'applications/json',
+  }),
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,28 +24,36 @@ export class TodoService {
   // By grabbing HttpClient in this constructor, http is now accessible from anywhere in the class.
   constructor(private http: HttpClient) {}
 
-  // Function makes API call to the given URL.
+  // Get Todos
+  // This function makes an API call to the given URL.
   // Returns an array of type: Todo. (notice our Todo class has the exact same property names as the objects that the API is returning.)
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(`${this.todosUrl}${this.todosLimit}`);
+  }
 
-    // This is what our dummy data looked like before we switched to getting data from the API.
-    // return [
-    //   {
-    //     id: 1,
-    //     title: 'Todo One',
-    //     completed: true,
-    //   },
-    //   {
-    //     id: 2,
-    //     title: 'Todo Two',
-    //     completed: true,
-    //   },
-    //   {
-    //     id: 3,
-    //     title: 'Todo Three',
-    //     completed: false,
-    //   },
-    // ];
+  // Toggle Completed
+  // We use Observable<any> instead of Observable<Todo> because the API has a 4th property called userID but ours only has 3 properties. So they're not exact.
+  toggleCompleted(myTodo: Todo): Observable<any> {
+    const url = `${this.todosUrl}/${myTodo.id}`;
+    return this.http.put(url, myTodo, httpOptions);
   }
 }
+
+// This is what our dummy data looked like before we switched to getting data from the API.
+// return [
+//   {
+//     id: 1,
+//     title: 'Todo One',
+//     completed: true,
+//   },
+//   {
+//     id: 2,
+//     title: 'Todo Two',
+//     completed: true,
+//   },
+//   {
+//     id: 3,
+//     title: 'Todo Three',
+//     completed: false,
+//   },
+// ];
