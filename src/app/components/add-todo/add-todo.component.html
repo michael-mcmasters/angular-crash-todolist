@@ -1,0 +1,12 @@
+<!-- [(ngModel)]="title" is how we are accessing our title property in app-todo.component.ts. -->
+<!-- [(ngModel)] is two-way data binding. To use it, make sure to import it in app.module.ts. -->
+
+<form class="form" (ngSubmit)="onSubmit()">
+  <input
+    type="text"
+    name="title"
+    [(ngModel)]="title"
+    placeholder="Add Todo..."
+  />
+  <input type="submit" value="Submit" class="btn" />
+</form>
