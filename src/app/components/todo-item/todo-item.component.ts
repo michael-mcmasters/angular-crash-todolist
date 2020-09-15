@@ -9,7 +9,18 @@ import { Todo } from 'src/app/models/Todo';
 export class TodoItemComponent implements OnInit {
   // myTodo is assigned in todos.component.html where it says [myTodo]="todo">
   @Input() myTodo: Todo;
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  // Set Dynamic Classes
+  setClasses() {
+    let classes = {
+      todo: true,
+      'is-complete': this.myTodo.completed,
+    };
+
+    return classes;
+  }
 }

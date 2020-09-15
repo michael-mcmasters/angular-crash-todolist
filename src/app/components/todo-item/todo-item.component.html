@@ -1,1 +1,7 @@
-<p>{{ myTodo.title }}</p>
+<div [ngClass]="setClasses()">
+  <p>
+    <input type="checkbox" />
+    {{ myTodo.title }}
+    <button class="del">x</button>
+  </p>
+</div>
