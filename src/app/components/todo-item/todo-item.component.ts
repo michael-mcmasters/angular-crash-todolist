@@ -7,8 +7,9 @@ import { Todo } from 'src/app/models/Todo';
   styleUrls: ['./todo-item.component.css'],
 })
 export class TodoItemComponent implements OnInit {
-  // (myTodo is assigned in todos.component.html where it says [myTodo]="todo">)
-  // Because myTodo is of type Todo.ts. It has properties id, title, completed.
+  // @Input lets us know that this variable is assigned in the parent component's html file.
+  // So in todos.component.html it is assigned where it says [myTodo]="todo">.
+  // Because myTodo is of type: Todo.ts. It has properties id, title, completed.
   @Input() myTodo: Todo;
 
   constructor() {}
