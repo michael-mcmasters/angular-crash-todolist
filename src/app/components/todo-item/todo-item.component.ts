@@ -10,8 +10,9 @@ import { TodoService } from '../../services/todo.service';
 export class TodoItemComponent implements OnInit {
   // @Input() when parent component is setting values in this component. ( As seen in todos.component.html: [myTodo]="todo" ).
   // @Output() when this component is setting a value in the parent component. ( As seen in todos.component.html: (deleteTodo)="deleteTodo($event)" ).
+  // If you want to display a property inside of this class's html file, you don't need @ anything. Just create the property. and then use {{ myProperty }} in the .html.
 
-  // Because myTodo is of type: Todo. It has properties id, title, completed. (Go to Todo.ts to see them.)
+  // Because myTodo is of type: Todo. It has the properties id, title, and completed. (Go to Todo.ts to see them.)
   @Input() myTodo: Todo;
   @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter();
 
