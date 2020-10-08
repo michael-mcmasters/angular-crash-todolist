@@ -22,7 +22,16 @@ export class TodoService {
   todosLimit = '?_limit=5';
 
   // By grabbing HttpClient in this constructor, http is now accessible from anywhere in the class.
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+  // ** (See @6.32 of this video: https://www.youtube.com/watch?v=xaYuxILKBlo&t=41s&ab_channel=AndreMadarang) **
+  // ** Using private is shorthand for writing this. **
+  //
+  // http: HttpClient;
+  //
+  // constructor(http: HttpClient) { 
+  //   this.http = http;
+  // }
+
 
   // Get Todos
   // This function makes an API call to the given URL.

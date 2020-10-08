@@ -12,6 +12,7 @@ export class TodosComponent implements OnInit {
   todos: Todo[];
 
   // todoService is accessible from anywhere in the class
+  // private is shorthand for dependency injection. See this video @6.32: https://www.youtube.com/watch?v=xaYuxILKBlo&t=41s&ab_channel=AndreMadarang
   constructor(private todoService: TodoService) {}
 
   // todoService holds data for each todo component.
