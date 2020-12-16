@@ -6,7 +6,7 @@ import { Todo } from '../models/Todo';
 // The type of data we are passing to the API. Letting it know it will be in json format.
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'applications/json',
+    'Content-Type': 'application/json',
   }),
 };
 
